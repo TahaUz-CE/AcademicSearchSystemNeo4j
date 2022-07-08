@@ -1,0 +1,42 @@
+{% extends 'home/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<h2>Search Database Page</h2>
+<div class="profile">
+    <h2>Search Person</h2>
+    <p>Not: Ekip Modunu Aktif Etmek İçin Ekip Kutucuğuna 1 Değeri Giriniz Sec Kutucuğunu 4 Yaparak Makalenin İsmini Ara
+        Kutucuğuna Girerek O Makalenin Ekip Bilgisini Öğrenebilirsiniz</p>
+    <h2>Sec</h2>
+    <p>1.AkademikID</p>
+    <p>2.AkademikAd</p>
+    <p>3.AkademikSoyad</p>
+    <p>4.YayinAd</p>
+    <p>5.YayinYili</p>
+    <p>6.YayinTur</p>
+    <p>7.YayinYer</p>
+    <form action="{{ url_for('profile') }}" method="post">
+        <input type="text" name="araD" placeholder="Ara" id="araD" required>
+        <input type="text" name="sec" placeholder="Sec" id="sec" required>
+        <input type="text" name="ekip" placeholder="Ekip" id="ekip" required>
+        <input type="submit" value="ara">
+    </form>
+
+    <h2>Academic Database</h2>
+    <table>
+        <tr>
+            {% for header in headings %}
+            <th>{{ header }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in data %}
+        <tr>
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+        <tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

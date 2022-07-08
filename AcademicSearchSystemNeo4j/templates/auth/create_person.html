@@ -1,0 +1,41 @@
+{% extends 'home/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<h2>Create Person Page</h2>
+<div class="create_person">
+    <h2>Add Personel Your Database </h2>
+    <p>Sec:</p>
+    <p>1-Ekip Oluştur Seçeneğidir</p>
+    <p>2-Yeni Personel Ekleme Seçeneğidir</p>
+    <form action="{{ url_for('create_person') }}" method="post">
+        <input type="text" name="akademikID" placeholder="AkademikID" id="akademikID" required>
+        <input type="text" name="akademikAd" placeholder="AkademikAd" id="akademikAd" required>
+        <input type="text" name="akademikSoyad" placeholder="AkademikSoyad" id="akademikSoyad" required>
+        <input type="text" name="yayinAd" placeholder="YayinAd" id="yayinAd" required>
+        <input type="text" name="yayinYili" placeholder="YayinYili" id="yayinYili" required>
+        <input type="text" name="yayinTur" placeholder="YayinTur" id="yayinTur" required>
+        <input type="text" name="yayinYer" placeholder="YayinYer" id="yayinYer" required>
+        <input type="text" name="sec" placeholder="Sec" id="sec" required>
+
+        <input type="submit" value="PersonelEkle">
+    </form>
+
+    <h2>ACADEMIC DATABASE </h2>
+    <table>
+        <tr>
+            {% for header in headings %}
+            <th>{{ header }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in data %}
+        <tr>
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+        <tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
